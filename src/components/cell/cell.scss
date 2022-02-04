@@ -1,0 +1,161 @@
+@import "../../style/colors.css";
+
+@media (orientation:portrait) {
+  :root {
+    --full-size-with-margins: 27vw;
+    --full-size: 24vw;
+    --half-size-with-margin: 15vw;
+    --half-size: 12vw;
+    --margin: 1.5vw;
+    --bounce-up: -1.5vw;
+    --bounce-up-small: -0.5vw;
+    --shake: 0.25vw;
+  }
+}
+
+@media (orientation:landscape) {
+  :root {
+    --full-size-with-margins: 18vh;
+    --full-size: 15vh;
+    --half-size-with-margin: 10.5vh;
+    --half-size: 7.5vh;
+    --margin: 1.5vh;
+    --bounce-up: -1vh;
+    --bounce-up-small: -0.5vh;
+    --shake: 0.25vh;
+  }
+}
+
+.cell-container {
+  transition: all 100s ease-in;
+  margin: var(--margin);
+}
+
+.cell-front {
+  display: relative;
+  width: var(--full-size-with-margins);
+  height: var(--full-size-with-margins);
+}
+
+.quarter-container {
+  position: absolute;
+}
+
+.quarter {
+  position: absolute;
+  background-color: rgb(204, 204, 204);
+  z-index: 2;
+}
+
+.nightmode-on {
+  .quarter-N {
+    background-color: var(--nightmode-lightgray);
+  }
+}
+
+.lock-icon {
+
+  font-size: 4vh;
+  color: gray;
+  z-index: 11;
+  text-align: center;
+  color: black;
+  display: none;
+  line-height: var(--half-size);
+  width: var(--half-size);
+  height: var(--half-size);
+}
+
+.lock-icon.lock-icon-visibile {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.quarter-0 {
+  background-color: var(--yellow);
+}
+
+.quarter-1 {
+  background-color: var(--purple);
+}
+
+.quarter-2 {
+  background-color: var(--cyan);
+}
+
+.quarter-up,
+.quarter-down {
+  width: var(--full-size);
+  height: var(--half-size);
+}
+
+.quarter-left,
+.quarter-right {
+  width: var(--half-size);
+  height: var(--full-size);
+}
+
+@keyframes shake {
+  0% { transform: translate(0.25vh, 0) rotate(0deg); }
+  10% { transform: translate(-0.25vh, 0) rotate(-1deg); }
+  20% { transform: translate(-0.25vh, 0) rotate(1deg); }
+  30% { transform: translate(0.25vh, 0) rotate(0deg); }
+  40% { transform: translate(0.25vh, 0) rotate(1deg); }
+  50% { transform: translate(-0.25vh, 0) rotate(-1deg); }
+  60% { transform: translate(-0.25vh, 0) rotate(0deg); }
+  70% { transform: translate(0.25vh, 0) rotate(-1deg); }
+  80% { transform: translate(-2px, 0) rotate(1deg); }
+  90% { transform: translate(0.25vh, 0) rotate(0deg); }
+  100% { transform: translate(0.25vh, 0) rotate(-1deg); }
+}
+
+.quarter-locked:active {
+  animation: shake 0.25s;
+}
+
+@media (hover:hover) {
+  .quarter-unlocked:hover {
+    transform: translateY(var(--bounce-up));
+    transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .quarter-unlocked:active {
+    transform: translateY(var(--bounce-up-small));
+    transition: transform 100ms cubic-bezier(.3, .7, .4, 1.5);
+    z-index: 5;
+  }
+}
+
+@media (hover:none) {
+  .quarter-unlocked:active {
+    transform: translateY(var(--bounce-up));
+    transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+  }
+}
+
+.quarter-down {
+  margin: var(--half-size-with-margin) 0 0 var(--margin);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  z-index: 8;
+}
+
+.quarter-up {
+  margin: 0 0 0 var(--margin);
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+  z-index: 6;
+}
+
+.quarter-right {
+  margin: var(--margin) 0 0 var(--half-size-with-margin);
+  clip-path: polygon(100% 100%, 100% 0, 0 50%);
+  z-index: 7;
+}
+
+.quarter-left {
+  margin: var(--margin) 0 0 0;
+  clip-path: polygon(0 100%, 0 0, 100% 50%);
+  z-index: 7;
+}

@@ -1,0 +1,10 @@
+.grid {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,50 @@
+@import "../../style/colors.css";
+
+@media (orientation:landscape) {
+    :root {
+        --logo-width: 10vw;
+    }
+}
+
+@media (orientation:portrait) {
+    :root {
+        --logo-width: 40vw;
+    }
+}
+
+.logo {
+    margin: 3vh 0;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 0.25vw;
+
+    #logo-svg {
+        margin: 3vh 0;
+        width: var(--logo-width);
+    }
+
+    #logo-tri {
+        color: black;
+        fill: black;
+    }
+
+    #logo-ko {
+        color: var(--yellow);
+        fill: var(--yellow);
+    }
+
+    #logo-l {
+        color: var(--purple);
+        fill: var(--purple);
+    }
+
+    #logo-o {
+        color: var(--cyan);
+        fill: var(--cyan);
+    }
+
+    #logo-bracket {
+        color: black;
+        fill: black;
+    }
+}
