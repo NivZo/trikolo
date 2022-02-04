@@ -15,6 +15,7 @@ const width = 3;
 const GameScreen: React.FC = () => {
 
   const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), []);
+  console.log(rawBoardData)
 
   const [isNightMode, setIsNightMode] = React.useState(false);
   const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original))

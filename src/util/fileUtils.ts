@@ -1,7 +1,7 @@
 import { RawBoardData } from "./types";
 import boards from "../assets/boards/3by3";
 
-const boardCount = 3000;
+const boardCount = boards.length / 2;
 
 export const getRandomHash = (): RawBoardData => {
     const boardIndex = Math.floor(Math.random() * boardCount) * 2;
