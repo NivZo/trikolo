@@ -1,10 +1,8 @@
 import React from "react";
 import { Cell } from "../cell/cell";
-import { checkVictory, initGrid, mapGridToHash } from "../../util/gameUtils";
 import "./grid.scss";
 import { CellData, GridData } from "../../util/types";
 import { splitArrayToSubarrays } from "../../util/utils";
-import { TactileButton } from "../tactileButton/tactileButton";
 
 type GridProps = {
     height: number,

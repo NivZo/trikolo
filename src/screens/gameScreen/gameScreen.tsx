@@ -16,16 +16,18 @@ const GameScreen: React.FC = () => {
 
   const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), []);
 
+  const [isNightMode, setIsNightMode] = React.useState(false);
+  const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original))
+  const [generalMessage, setGeneralMessage] = React.useState("");
+
   React.useEffect(
     () => {
       if (checkVictory(mapGridToHash(gridData), rawBoardData.solution)) {
-        alert("WOW!")
+        setGeneralMessage("Nice!")
       }
-    }
+    },
+    [gridData, rawBoardData],
   )
-
-  const [isNightMode, setIsNightMode] = React.useState(false);
-  const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original))
 
   return (
     <div
@@ -34,6 +36,7 @@ const GameScreen: React.FC = () => {
         ["nightmode-on", isNightMode]])}
     >
       <Logo />
+      <span>{generalMessage}</span>
       <Grid height={height} width={width} gridData={gridData} setGridData={setGridData} />
 
       <div className="grid-buttons-row">

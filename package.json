@@ -13,6 +13,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "sass": "1.49.7",
     "typescript": "^4.5.5",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
@@ -26,20 +27,16 @@
     "workbox-range-requests": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4",
-    "sass": "1.49.7",
-    "fs": "0.0.1-security"
+    "workbox-streams": "^5.1.4"
   },
-  "browser": {
-    "fs": true,
-    "path": false,
-    "os": false
-  },
+  "homepage": "http://nivzo.github.io/trikolo",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -58,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
