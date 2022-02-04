@@ -14,17 +14,25 @@ const width = 3;
 
 const GameScreen: React.FC = () => {
 
-  const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), []);
-  console.log(rawBoardData)
-
+  const [victory, setVictory] = React.useState(false);
   const [isNightMode, setIsNightMode] = React.useState(false);
-  const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original))
-  const [generalMessage, setGeneralMessage] = React.useState("");
+
+  const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), [victory === false]);
+  const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original));
+
+  React.useEffect(
+    () => {
+      if (!victory) {
+        setGridData(initGrid(rawBoardData.original));
+      }
+    },
+    [victory],
+  )
 
   React.useEffect(
     () => {
       if (checkVictory(mapGridToHash(gridData), rawBoardData.solution)) {
-        setGeneralMessage("Nice!")
+        setVictory(true)
       }
     },
     [gridData, rawBoardData],
@@ -34,10 +42,10 @@ const GameScreen: React.FC = () => {
     <div
       className={joinClassesConditionally([
         ["app unselectable-text", true],
+        ["victory", victory],
         ["nightmode-on", isNightMode]])}
     >
       <Logo />
-      <span>{generalMessage}</span>
       <Grid height={height} width={width} gridData={gridData} setGridData={setGridData} />
 
       <div className="grid-buttons-row">
@@ -47,7 +55,13 @@ const GameScreen: React.FC = () => {
           ☰
         </TactileButton>
         <TactileButton
-          onClick={() => setGridData(initGrid(rawBoardData.original))}
+          onClick={() => {
+            if (victory) {
+              setVictory(false);
+            } else {
+              setGridData(initGrid(rawBoardData.original));
+            }
+          }}
           className="grid-reset-button"
         >
           ↻

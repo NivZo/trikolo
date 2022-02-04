@@ -9,7 +9,7 @@ type LogoProps = {
 export const Logo: React.FC<LogoProps> = ({
     className,
 }) => {
-    return <div className={joinClassesConditionally([
+    return <div id="logo-container" className={joinClassesConditionally([
         ["logo", true],
         [className!, !!className],
     ])}>

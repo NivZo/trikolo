@@ -1,8 +1,11 @@
-import React from "react"
-import { Direction, CellData, QuarterData } from "../../util/types";
+import React from "react";
+import { CellData, Direction, QuarterData } from "../../util/types";
 import { getNextQuarterValue } from "../../util/gameUtils";
-import "./cell.scss"
 import { joinClassesConditionally } from "../../util/utils";
+import "./cell.scss";
+
+const clickAudio = new Audio(require("../../assets/sounds/arcadeClick.mp3"));
+const lockedAudio = new Audio(require("../../assets/sounds/click.wav"));
 
 type QuarterProps = {
     cellId: number,
@@ -33,6 +36,14 @@ const Quarter: React.FC<QuarterProps> = ({
                         ...quarterData,
                         value: getNextQuarterValue(quarterData.value),
                     });
+
+                    clickAudio.load();
+                    clickAudio.volume = 0.5;
+                    clickAudio.play();
+                } else {
+                    lockedAudio.load();
+                    lockedAudio.volume = 0.5;
+                    lockedAudio.play();
                 }
             }}
         />
