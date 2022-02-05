@@ -6,13 +6,16 @@
     :root {
         --logo-width: 10vw;
         --button-width: 4vw;
+        font-size: 1vw;
     }
+    
 }
 
 @media (orientation:portrait) {
     :root {
         --logo-width: 40vw;
         --button-width: 10vw;
+        font-size: 3.5vw;
     }
 }
 
