@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid } from "../../components/grid/grid";
 import "./gameScreen.scss";
-import "../../fonts/Abel-Regular.ttf";
 import { TactileButton } from "../../components/tactileButton/tactileButton";
 import { joinClassesConditionally } from "../../util/utils";
 import { checkVictory, initGrid, mapGridToHash } from "../../util/gameUtils";
@@ -11,6 +10,7 @@ import { GameContextProvider } from "../../components/context/gameContext";
 import { AppContext, AppContextProvider } from "../../components/context/appContext";
 import { Fade } from "../../components/fade/fade";
 import { homeIcon, moonIcon, nextIcon, restartIcon, soundOffIcon, soundOnIcon, sunIcon } from "../../assets/icons/fontIcons";
+import { Timer } from "../../components/timer/timer";
 
 const height = 3;
 const width = 3;
@@ -49,6 +49,7 @@ const GameScreen: React.FC = () => {
           ["victory", victory],
         ])}
       >
+        <Timer/>
         <Grid height={height} width={width} gridData={gridData} setGridData={setGridData} />
 
         <div className="grid-buttons-row">

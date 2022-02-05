@@ -9,8 +9,9 @@ export const Fade: React.FC<FadeProps> = ({
     children,
     durationFactor,
 }) => {
-    return <AnimatePresence exitBeforeEnter >
-        <motion.div
+    return <AnimatePresence exitBeforeEnter>
+        <motion.div 
+            className="fade"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

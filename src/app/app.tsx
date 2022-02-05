@@ -1,5 +1,4 @@
 import React from "react";
-import { clickAudio } from "../assets/sounds/audio";
 import { AppContextProvider, Page } from "../components/context/appContext";
 import { Fade } from "../components/fade/fade";
 import { Logo } from "../components/logo/logo";
@@ -8,6 +7,7 @@ import { HomeScreen } from "../screens/homeScreen/homeScreen";
 import { TutorialScreen } from "../screens/tutorialScreen/tutorialScreen";
 import { useToggle } from "../util/hooks";
 import { joinClassesConditionally } from "../util/utils";
+import "../assets/fonts/Abel-Regular.ttf";
 import "./app.scss";
 
 const getPage = (page: Page): JSX.Element => {

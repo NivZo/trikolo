@@ -1,6 +1,6 @@
 
 
-// export const isDefined = (obj: any): boolean => (obj !== undefined && obj !== null);
+export const isDefined = (obj: any): boolean => (obj !== undefined && obj !== null);
 
 export const joinClasses = (classNames: Array<string>): string => classNames.join(" ");
 
