@@ -1,0 +1,52 @@
+@import "../style/colors.css";
+@import "/src/style/fonts.scss";
+@import "/src/style/keyframes.scss";
+
+@media (orientation:landscape) {
+    :root {
+        --logo-width: 10vw;
+        --button-width: 4vw;
+    }
+}
+
+@media (orientation:portrait) {
+    :root {
+        --logo-width: 40vw;
+        --button-width: 10vw;
+    }
+}
+
+.app {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Abel";
+
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    align-self: center;
+}
+
+.screen {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+}
+
+.unselectable-text {
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+}
+
+.darkmode-on {
+    background-color: var(--darkmode)
+}

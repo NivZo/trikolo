@@ -1,59 +1,16 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { CellData, Direction, QuarterData } from "../../util/types";
 import { getNextQuarterValue } from "../../util/gameUtils";
 import { joinClassesConditionally } from "../../util/utils";
+import { GameContext } from "../context/gameContext";
 import "./cell.scss";
-
-const clickAudio = new Audio(require("../../assets/sounds/arcadeClick.mp3"));
-const lockedAudio = new Audio(require("../../assets/sounds/click.wav"));
-
-type QuarterProps = {
-    cellId: number,
-    direction: Direction,
-    quarterData: QuarterData,
-    setQuarterData: (quarterValue: QuarterData) => void,
-}
-
-const Quarter: React.FC<QuarterProps> = ({
-    cellId,
-    direction,
-    quarterData,
-    setQuarterData,
-}) => {
-    const quarterId = `quarter-${cellId}-${direction}`;
-    return <div className="quarter-container">
-        <div
-            onTouchEnd={() => document.getElementById(quarterId)?.blur()}
-            id={quarterId}
-            className={joinClassesConditionally([
-                [`quarter quarter-${direction} quarter-front quarter-${quarterData.value}`, true],
-                ["quarter-locked", quarterData.locked],
-                ["quarter-unlocked", !quarterData.locked],
-            ])}
-            onClick={() => {
-                if (!quarterData.locked) {
-                    setQuarterData({
-                        ...quarterData,
-                        value: getNextQuarterValue(quarterData.value),
-                    });
-
-                    clickAudio.load();
-                    clickAudio.volume = 0.5;
-                    clickAudio.play();
-                } else {
-                    lockedAudio.load();
-                    lockedAudio.volume = 0.5;
-                    lockedAudio.play();
-                }
-            }}
-        />
-    </div >
-}
+import { AppContext } from "../context/appContext";
+import { clickAudio, lockedAudio } from "../../assets/sounds/audio";
 
 type CellProps = {
     id: number,
     cellData: CellData,
-    setCellData: (cellData: CellData) => void
+    setCellData?: (cellData: CellData) => void,
 }
 
 export const Cell: React.FC<CellProps> = ({
@@ -61,8 +18,6 @@ export const Cell: React.FC<CellProps> = ({
     cellData,
     setCellData,
 }) => {
-
-    const [isHover, setIsHover] = React.useState<boolean>(false);
 
     return <div className="cell-container">
         {/* <div className={`cell-back ${!!isTopRow ? "cell-top-row" : ""} ${!!isTopRow && isHover ? "cell-back-hover" : ""}`} /> */}
@@ -73,29 +28,81 @@ export const Cell: React.FC<CellProps> = ({
                 direction="up"
                 quarterData={cellData.up}
                 setQuarterData={
-                    quarterData => setCellData({ ...cellData, up: quarterData })
+                    quarterData => !!setCellData && setCellData({ ...cellData, up: quarterData })
                 } />
             <Quarter
                 cellId={id}
                 direction="right"
                 quarterData={cellData.right}
                 setQuarterData={
-                    quarterData => setCellData({ ...cellData, right: quarterData })
+                    quarterData => !!setCellData && setCellData({ ...cellData, right: quarterData })
                 } />
             <Quarter
                 cellId={id}
                 direction="down"
                 quarterData={cellData.down}
                 setQuarterData={
-                    quarterData => setCellData({ ...cellData, down: quarterData })
+                    quarterData => !!setCellData && setCellData({ ...cellData, down: quarterData })
                 } />
             <Quarter
                 cellId={id}
                 direction="left"
                 quarterData={cellData.left}
                 setQuarterData={
-                    quarterData => setCellData({ ...cellData, left: quarterData })
+                    quarterData => !!setCellData && setCellData({ ...cellData, left: quarterData })
                 } />
         </div>
     </div>
+}
+
+type QuarterProps = {
+    cellId: number,
+    direction: Direction,
+    quarterData: QuarterData,
+    setQuarterData?: (quarterValue: QuarterData) => void,
+}
+
+const Quarter: React.FC<QuarterProps> = ({
+    cellId,
+    direction,
+    quarterData,
+    setQuarterData,
+}) => {
+    const gameContext = React.useContext(GameContext);
+    const appContext = React.useContext(AppContext);
+
+    const quarterId = `quarter-${cellId}-${direction}`;
+    const clickable = !gameContext.victory;
+    const soundable = !appContext.isMuted
+
+    const onClick = () => {
+        if (!!setQuarterData && !quarterData.locked) {
+            setQuarterData({
+                ...quarterData,
+                value: getNextQuarterValue(quarterData.value),
+            });
+            if (soundable) {
+                clickAudio.load();
+                clickAudio.play();
+            }
+        } else {
+            if (soundable) {
+                lockedAudio.load();
+                lockedAudio.play();
+            }
+        }
+    };
+
+    return <div className="quarter-container">
+        <div
+            onTouchEnd={() => document.getElementById(quarterId)?.blur()}
+            id={quarterId}
+            className={joinClassesConditionally([
+                [`quarter quarter-${direction} quarter-front quarter-${quarterData.value}`, true],
+                ["quarter-locked", quarterData.locked && clickable],
+                ["quarter-unlocked", !quarterData.locked && clickable],
+            ])}
+            onClick={onClick}
+        />
+    </div >
 }

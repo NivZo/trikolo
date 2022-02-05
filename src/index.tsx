@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import GameScreen from './screens/gameScreen/gameScreen';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { App } from './app/app';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GameScreen />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

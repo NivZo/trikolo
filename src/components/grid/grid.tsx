@@ -8,7 +8,7 @@ type GridProps = {
     height: number,
     width: number,
     gridData: GridData,
-    setGridData:  React.Dispatch<React.SetStateAction<GridData>>,
+    setGridData: React.Dispatch<React.SetStateAction<GridData>>,
 }
 
 export const Grid: React.FC<GridProps> = ({

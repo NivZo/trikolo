@@ -1,19 +1,6 @@
-@import "../../style/colors.css";
-
-@media (orientation:landscape) {
-    :root {
-        --logo-width: 10vw;
-    }
-}
-
-@media (orientation:portrait) {
-    :root {
-        --logo-width: 40vw;
-    }
-}
 
 .logo {
-    margin: 3vh 0 0 0;
+    margin: 1vh 0;
     width: 100%;
     text-align: center;
     letter-spacing: 0.25vw;

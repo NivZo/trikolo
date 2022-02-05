@@ -1,9 +1,5 @@
-import { getRandomHash } from "./fileUtils";
 import { allQuarterValues, CellData, GridData, QuarterData, QuarterValue, RawBoardData } from "./types";
-import { splitArrayToSubarrays, splitStringChunksOf4 } from "./utils";
-
-const original = "N2201NNN022NNNN00NN1N2NN00N1NN1N12N1"
-const solved = "122011020221210000212210002121101201"
+import { splitStringChunksOf4 } from "./utils";
 
 const initialCell: CellData = {
     up: { value: "N", locked: false },
@@ -38,10 +34,6 @@ export const mapHashToCellData = (hash: string, starter: boolean = false): CellD
     down: asQuarterData(hash[2], starter),
     left: asQuarterData(hash[3], starter),
 })
-
-export const getRandomBoard = () => {
-    return original;
-}
 
 export const checkVictory = (originalHash: string, solutionHash: string) => {
     return originalHash === solutionHash;

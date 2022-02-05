@@ -1,3 +1,7 @@
+
+
+// export const isDefined = (obj: any): boolean => (obj !== undefined && obj !== null);
+
 export const joinClasses = (classNames: Array<string>): string => classNames.join(" ");
 
 export const joinClassesConditionally = (conditionedClassNames: Array<[string, boolean]>): string =>

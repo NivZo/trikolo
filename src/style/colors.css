@@ -2,7 +2,7 @@
     --cyan: rgba(106, 213, 255);
     --yellow: rgb(251, 197, 95);
     --purple: rgb(149, 92, 255);
-    --nightmode: #333333;
-    --nightmode-lightgray: rgb(119, 119, 119);
-    --nightmode-gray: rgb(34, 34, 34);
+    --darkmode: #333333;
+    --darkmode-lightgray: rgb(119, 119, 119);
+    --darkmode-gray: rgb(34, 34, 34);
 }
