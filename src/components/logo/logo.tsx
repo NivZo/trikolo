@@ -13,10 +13,13 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
     const toCase = (text: string) => !!upperCase ? text.toUpperCase() : text;
     const viewBox = !!upperCase ? "40 55 192 75" : "20 55 192 75";
-    return <div id="logo-container" className={joinClassesConditionally([
-        ["logo", true],
-        [className!, !!className],
-    ])}>
+    return <div
+        id="logo-container"
+        className={joinClassesConditionally([
+            ["logo", true],
+            [className!, !!className],
+        ])}
+    >
         <svg id="logo-svg" viewBox={viewBox} xmlns="http://www.w3.org/2000/svg">
             <text style={{ fill: "rgb(51, 51, 51)", fontFamily: "Abel", fontSize: "52px", fontWeight: 700, letterSpacing: "4.9px", whiteSpace: "pre" }}>
                 <tspan id="logo-tri" x="38.033" y="106.332">
@@ -32,7 +35,7 @@ export const Logo: React.FC<LogoProps> = ({
                     {toCase("o")}
                 </tspan>
             </text>
-            <text id="logo-bracket" style={{ fontFamily: "Abel", fontSize: "52px", fontWeight: 700, whiteSpace: "pre" }} transform="matrix(0, 1.022663, -1, 0, 343.420685, -58.742149)" x="166.467" y="198.327">)</text>
+            <text id="logo-bracket" style={{ fontFamily: "Abel", fontSize: "52px", fontWeight: 700, whiteSpace: "pre" }} transform={`matrix(0, 1.022663, -1, 0, 3${!!upperCase ? "7" : "4"}3.420685, -58.742149)`} x="166.467" y="198.327">)</text>
         </svg>
 
         {/* <svg id="logo-svg" viewBox="37.639 55.549 161.427 73.319" xmlns="http://www.w3.org/2000/svg">
