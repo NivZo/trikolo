@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/trikolo/static/css/main.da8ec498.css",
-    "main.js": "/trikolo/static/js/main.212b87de.js",
+    "main.js": "/trikolo/static/js/main.b6aacd2a.js",
     "static/js/377.ab2940be.chunk.js": "/trikolo/static/js/377.ab2940be.chunk.js",
     "service-worker.js": "/trikolo/service-worker.js",
     "static/media/click.wav": "/trikolo/static/media/click.837891333dc8e99509f7.wav",
@@ -9,11 +9,11 @@
     "static/media/arcadeClick.mp3": "/trikolo/static/media/arcadeClick.e68cfbe56b01203f7f8e.mp3",
     "index.html": "/trikolo/index.html",
     "main.da8ec498.css.map": "/trikolo/static/css/main.da8ec498.css.map",
-    "main.212b87de.js.map": "/trikolo/static/js/main.212b87de.js.map",
+    "main.b6aacd2a.js.map": "/trikolo/static/js/main.b6aacd2a.js.map",
     "377.ab2940be.chunk.js.map": "/trikolo/static/js/377.ab2940be.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.da8ec498.css",
-    "static/js/main.212b87de.js"
+    "static/js/main.b6aacd2a.js"
   ]
 }
