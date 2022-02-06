@@ -9,5 +9,6 @@ export const getRandomHash = (): RawBoardData => {
     return {
         original: boards[boardIndex],
         solution: boards[solutionIndex],
+        boardIndex,
     }
 }

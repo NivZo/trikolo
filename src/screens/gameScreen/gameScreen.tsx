@@ -7,7 +7,7 @@ import { checkVictory, initGrid, mapGridToHash } from "../../util/gameUtils";
 import { getRandomHash } from "../../util/fileUtils";
 import { RawBoardData } from "../../util/types";
 import { GameContextProvider } from "../../components/context/gameContext";
-import { AppContext, AppContextProvider } from "../../components/context/appContext";
+import { AppContext } from "../../components/context/appContext";
 import { Fade } from "../../components/fade/fade";
 import { homeIcon, moonIcon, nextIcon, restartIcon, soundOffIcon, soundOnIcon, sunIcon } from "../../assets/icons/fontIcons";
 import { Timer } from "../../components/timer/timer";
@@ -49,7 +49,7 @@ const GameScreen: React.FC = () => {
           ["victory", victory],
         ])}
       >
-        <Timer/>
+        <Timer />
         <Grid height={height} width={width} gridData={gridData} setGridData={setGridData} />
 
         <div className="grid-buttons-row">

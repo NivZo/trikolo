@@ -111,22 +111,20 @@ export const TutorialScreen: React.FC = () => {
         [tutorialStep]
     )
 
-    return <Fade>
+    return <Fade key={`tutorial-screen-step-${tutorialStep}`}>
         <div
             id="tutorial-screen"
             className={joinClassesConditionally([
                 ["screen", true],
             ])}
         >
-            <Fade durationFactor={3}>
-                <div className="tutorial-text">
-                    {tutorialGridScript[tutorialStep].text.map(row => <span className="tutorial-text-row">{
-                        row.length > 0 && row[0] === "GRID" ?
-                            <Grid height={tutorialGridScript[tutorialStep].gridHeight} width={tutorialGridScript[tutorialStep].gridWidth} gridData={gridData} setGridData={setGridData} />
-                            : row
-                    }</span>)}
-                </div>
-            </Fade>
+            <div className="tutorial-text">
+                {tutorialGridScript[tutorialStep].text.map(row => <span className="tutorial-text-row">{
+                    row.length > 0 && row[0] === "GRID" ?
+                        <Grid height={tutorialGridScript[tutorialStep].gridHeight} width={tutorialGridScript[tutorialStep].gridWidth} gridData={gridData} setGridData={setGridData} />
+                        : row
+                }</span>)}
+            </div>
 
             <Fade durationFactor={5}>
                 <TactileButton
@@ -143,13 +141,11 @@ export const TutorialScreen: React.FC = () => {
                 />
             </Fade>
 
-            <Fade durationFactor={5}>
-                <TactileButton
-                    className="home-button"
-                    onClick={() => appContext.setPage("home")}
-                    children={homeIcon}
-                />
-            </Fade>
+            <TactileButton
+                className="home-button"
+                onClick={() => appContext.setPage("home")}
+                children={homeIcon}
+            />
         </div>
     </Fade>
 }

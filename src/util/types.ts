@@ -20,6 +20,7 @@ export type GridData = Array<CellData>
 export type RawBoardData = {
     original: string,
     solution: string,
+    boardIndex: number,
 };
 
 export const allQuarterValues: QuarterValue[] = ["N", "0", "1", "2"];
