@@ -7,7 +7,7 @@ import { Grid } from "../../components/grid/grid";
 import { TactileButton } from "../../components/tactileButton/tactileButton";
 import { initGrid, mapGridToHash } from "../../util/gameUtils";
 import { useToggle } from "../../util/hooks";
-import { joinClassesConditionally } from "../../util/utils";
+import { joinClasses, joinClassesConditionally } from "../../util/utils";
 import "./tutorialScreen.scss";
 
 type TutorialText = string | JSX.Element;
@@ -19,7 +19,13 @@ type TutorialStepScript = {
     advanceCheck: (gridHash: string) => boolean,
 };
 
-const Colored: React.FC = ({ children }) => <span className="tutorial-text-colored">{children}</span>;
+const Colored: React.FC<{ colorIndex?: number }> = ({ children, colorIndex }) => <span
+    className={joinClasses([
+        "tutorial-text-colored",
+        colorIndex !== undefined ? `colored-${colorIndex}` : "colored-1",
+    ])}>
+    {children}
+</span>;
 
 const tutorialGridScript: TutorialStepScript[] = [
     {
@@ -29,8 +35,8 @@ const tutorialGridScript: TutorialStepScript[] = [
         text: [
             ["Hey, Welcome to", <b>trikolo!</b>],
             [<br />],
-            [<b>trikolo</b>, "is a game of logic puzzles,"],
-            ["and I hope you find it relaxing yet challenging!"],
+            [<b>trikolo</b>, "is a game of logic puzzles."],
+            ["I hope you find it relaxing yet challenging!"],
             [<br />],
             ["Please click the button below"],
             ["(", nextIcon, ")"],
@@ -43,15 +49,14 @@ const tutorialGridScript: TutorialStepScript[] = [
         gridHeight: 1,
         gridWidth: 1,
         text: [
-            ["This is a", <b>cell,</b>, " made of 4 quarters."],
-            ["Initial quarters will be", <b>"locked",</b>],
+            ["This is a", <b>cell,</b>, " made of 4 triangles."],
+            ["Initial triangles will be", <b>"locked",</b>],
             ["this means they can not be changed."],
             ["GRID"],
-            ["You can change the ", <Colored>color</Colored>, " of an empty quarter by ", <b>clicking</b>, " on it.\n\n"],
+            ["You can change the ", <Colored>color</Colored>, " of an empty triangle by ", <b>clicking</b>, " it.\n\n"],
             [<br />],
-            ["There are", <Colored>3 total colors,</Colored>, "which appear in the same order."],
-            [<br />],
-            ["In order to advance, try changing the ", <Colored>color</Colored>, " of an", <b>empty quarter.</b>],
+            ["There are", <Colored colorIndex={0}>three (3)</Colored>, <Colored colorIndex={1}>total</Colored>, <Colored colorIndex={2}>colors,</Colored>, "which appear in the same order."],
+            ["In order to proceed, try changing the ", <Colored>color</Colored>, " of an", <b>empty triangle.</b>],
         ],
         advanceCheck: gridHash => gridHash !== "21NN",
     },
@@ -61,11 +66,11 @@ const tutorialGridScript: TutorialStepScript[] = [
         gridWidth: 1,
         text: [
             ["All cells must be ", <Colored>colored,</Colored>, "and all colors ", <b>must be present.</b>],
-            ["Since there are 4 quarters and 3 ", <Colored>colors,</Colored>],
-            [" one of them must appear on ", <b>two quarters.</b>],
+            ["Since there are 4 triangles and 3", <Colored>colors,</Colored>],
+            ["two triangles must have the", <b>same color.</b>],
             ["GRID"],
-            ["These ", <b>two quarters</b>, " with the same color", <b>must be adjacent.</b>],
-            ["Follow the new rules to complete this puzzle and advance."],
+            ["These ", <b>two triangles</b>, " with the same color", <b>must be adjacent.</b>],
+            ["Follow the new rules to complete this puzzle and proceed."],
         ],
         advanceCheck: gridHash => ["0012", "0021"].includes(gridHash),
     },
@@ -74,7 +79,7 @@ const tutorialGridScript: TutorialStepScript[] = [
         gridHeight: 1,
         gridWidth: 3,
         text: [
-            ["The last rule is -", <b>adjacent cells</b>, "share color on their", <b>touching quarters.</b>],
+            ["The last rule is -", <b>adjacent cells</b>, "share color on their", <b>touching triangles.</b>],
             ["GRID"],
             ["Follow the new rule to complete this puzzle and finish the tutorial."],
         ],

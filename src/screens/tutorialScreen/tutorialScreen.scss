@@ -29,7 +29,15 @@
             }
 
             .tutorial-text-colored {
-                color: var(--purple);
+                &.colored-0 {
+                    color: var(--yellow);
+                }
+                &.colored-1 {
+                    color: var(--purple);
+                }
+                &.colored-2 {
+                    color: var(--cyan);
+                }
             }
         }
     }

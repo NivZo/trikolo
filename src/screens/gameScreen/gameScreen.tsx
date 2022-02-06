@@ -16,75 +16,76 @@ const height = 3;
 const width = 3;
 
 const GameScreen: React.FC = () => {
+    const { setPage, isDarkMode, toggleDarkMode, isMuted, toggleMute } = React.useContext(AppContext);
+    const [victory, setVictory] = React.useState(false);
 
-  const { setPage, isDarkMode, toggleDarkMode, isMuted, toggleMute } = React.useContext(AppContext)
-  const [victory, setVictory] = React.useState(false);
+    const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), [victory === false]);
+    const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original));
 
-  const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), [victory === false]);
-  const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original));
-
-  React.useEffect(
-    () => {
-      if (!victory) {
-        setGridData(initGrid(rawBoardData.original));
-      }
-    },
-    [victory],
-  )
-
-  React.useEffect(
-    () => {
-      if (checkVictory(mapGridToHash(gridData), rawBoardData.solution)) {
-        setVictory(true)
-      }
-    },
-    [gridData, rawBoardData],
-  )
-
-  return <Fade>
-    <GameContextProvider value={{ victory }}>
-      <div
-        className={joinClassesConditionally([
-          ["screen", true],
-          ["victory", victory],
-        ])}
-      >
-        <Timer />
-        <Grid height={height} width={width} gridData={gridData} setGridData={setGridData} />
-
-        <div className="grid-buttons-row">
-          <TactileButton
-            className="home-button"
-            onClick={() => setPage("home")}
-          >{homeIcon}
-          </TactileButton>
-          <TactileButton
-            className="grid-reset-button"
-            onClick={() => {
-              if (victory) {
-                setVictory(false);
-              } else {
+    React.useEffect(
+        () => {
+            if (!victory) {
                 setGridData(initGrid(rawBoardData.original));
-              }
-            }}
-          >
-            {victory ? nextIcon : restartIcon}
-          </TactileButton>
-          <TactileButton
-            className="mute-button"
-            onClick={toggleMute}
-          >{isMuted ? soundOffIcon : soundOnIcon}
-          </TactileButton>
-          <TactileButton
-            className="darkmode-button"
-            onClick={toggleDarkMode}
-          >{isDarkMode ? moonIcon : sunIcon}
-          </TactileButton>
-        </div>
+            }
+        },
+        [victory],
+    )
 
-      </div >
-    </GameContextProvider>
-  </Fade>;
+    React.useEffect(
+        () => {
+            if (checkVictory(mapGridToHash(gridData), rawBoardData.solution)) {
+                setVictory(true);
+            }
+        },
+        [gridData, rawBoardData],
+    )
+
+    return <Fade>
+        <GameContextProvider value={{ victory }}>
+            <div
+                className={joinClassesConditionally([
+                    ["screen", true],
+                    ["victory", victory],
+                ])}
+            >
+                <Timer isActive={!victory} />
+                <Grid height={height} width={width} gridData={gridData} setGridData={setGridData} />
+
+                <div className="grid-buttons-row">
+                    <TactileButton
+                        className="home-button"
+                        onClick={() => setPage("home")}
+                    >{homeIcon}
+                    </TactileButton>
+                    <TactileButton
+                        className="grid-reset-button"
+                        onClick={() => {
+                            if (victory) {
+                                setVictory(false);
+                            } else {
+                                setGridData(initGrid(rawBoardData.original));
+                            }
+                        }}
+                    >
+                        {victory ? nextIcon : restartIcon}
+                    </TactileButton>
+                    <TactileButton
+                        className="mute-button"
+                        onClick={toggleMute}
+                    >
+                        {isMuted ? soundOffIcon : soundOnIcon}
+                    </TactileButton>
+                    <TactileButton
+                        className="darkmode-button"
+                        onClick={toggleDarkMode}
+                    >
+                        {isDarkMode ? moonIcon : sunIcon}
+                    </TactileButton>
+                </div>
+
+            </div >
+        </GameContextProvider>
+    </Fade>;
 }
 
 export default GameScreen;
