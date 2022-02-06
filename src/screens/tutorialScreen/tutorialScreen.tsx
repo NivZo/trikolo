@@ -33,9 +33,9 @@ const tutorialGridScript: TutorialStepScript[] = [
         gridHeight: 1,
         gridWidth: 1,
         text: [
-            ["Hey, Welcome to", <b>trikolo!</b>],
+            ["Hey, Welcome to", <b>TRIKOLO!</b>],
             [<br />],
-            [<b>trikolo</b>, "is a game of logic puzzles."],
+            [<b>TRIKOLO</b>, "is a game of logic puzzles."],
             ["I hope you find it relaxing yet challenging!"],
             [<br />],
             ["Please click the button below"],

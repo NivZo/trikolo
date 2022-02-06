@@ -38,7 +38,7 @@ export const App: React.FC = () => {
                     ["darkmode-on", isDarkMode],
                 ])
             }>
-                <Logo />
+                <Logo upperCase={true} />
                 {getPage(page)}
             </div>
         </AppContextProvider>
