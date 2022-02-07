@@ -22,6 +22,8 @@ export const Grid: React.FC<GridProps> = ({
         (cellData, i) => <Cell
             key={`cell-${i}`}
             id={i}
+            gridHeight={height}
+            gridWidth={width}
             cellData={cellData}
             setCellData={(newCellData: CellData) => {
                 setGridData((currentBoard: GridData) => {

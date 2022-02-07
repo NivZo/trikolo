@@ -9,6 +9,7 @@ import { useToggle } from "../util/hooks";
 import { joinClassesConditionally } from "../util/utils";
 import "../assets/fonts/Abel-Regular.ttf";
 import "./app.scss";
+import { LevelSelectionScreen } from "../screens/levelSelectionScreen/levelSelectionScreen";
 
 const getPage = (page: Page): JSX.Element => {
     switch (page) {
@@ -16,8 +17,14 @@ const getPage = (page: Page): JSX.Element => {
             return <HomeScreen />;
         case "tutorial":
             return <TutorialScreen />;
-        case "game":
-            return <GameScreen />;
+        case "level-selection":
+            return <LevelSelectionScreen />;
+        case "game-easy":
+            return <GameScreen height={3} width={3} />;
+        case "game-medium":
+            return <GameScreen height={5} width={5} />;
+        case "game-hard":
+            return <GameScreen height={7} width={7} />;
     }
 }
 

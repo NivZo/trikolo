@@ -3,30 +3,30 @@ import { AppContext } from "../../components/context/appContext";
 import { Fade } from "../../components/fade/fade";
 import { TactileButton } from "../../components/tactileButton/tactileButton";
 import { joinClassesConditionally } from "../../util/utils";
-import "./homeScreen.scss";
+import "./levelSelectionScreen.scss";
 
-export const HomeScreen: React.FC = () => {
+export const LevelSelectionScreen: React.FC = () => {
     const appContext = React.useContext(AppContext);
 
     return <Fade>
         <div
-            id="home-screen"
+            id="level-selection-screen"
             className={joinClassesConditionally([
                 ["screen", true],
             ])}
         >
-            <div className="home-buttons">
+            <div className="level-selection-buttons">
                 
-                <TactileButton
-                    onClick={() => appContext.setPage("tutorial")}
-                >
-                    Tutorial
+                <TactileButton onClick={() => appContext.setPage("game-easy")}>
+                    Easy - 3x3
                 </TactileButton>
 
-                <TactileButton
-                    onClick={() => appContext.setPage("level-selection")}
-                >
-                    Play
+                <TactileButton onClick={() => appContext.setPage("game-medium")}>
+                    Medium - 5x5
+                </TactileButton>
+
+                <TactileButton onClick={() => appContext.setPage("game-hard")}>
+                    Hard - 7x7
                 </TactileButton>
             </div>
         </div>

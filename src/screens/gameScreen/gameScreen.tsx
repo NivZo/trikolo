@@ -12,14 +12,19 @@ import { Fade } from "../../components/fade/fade";
 import { homeIcon, moonIcon, nextIcon, restartIcon, soundOffIcon, soundOnIcon, sunIcon } from "../../assets/icons/fontIcons";
 import { Timer } from "../../components/timer/timer";
 
-const height = 3;
-const width = 3;
+type GameScreenProps = {
+    height: number,
+    width: number,
+}
 
-const GameScreen: React.FC = () => {
+const GameScreen: React.FC<GameScreenProps> = ({
+    height,
+    width,
+}) => {
     const { setPage, isDarkMode, toggleDarkMode, isMuted, toggleMute } = React.useContext(AppContext);
     const [victory, setVictory] = React.useState(false);
 
-    const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), [victory === false]);
+    const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(height, width), [victory === false]);
     const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original));
 
     React.useEffect(

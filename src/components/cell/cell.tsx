@@ -10,48 +10,61 @@ import { clickAudio, lockedAudio } from "../../assets/sounds/audio";
 type CellProps = {
     id: number,
     cellData: CellData,
+    gridHeight: number,
+    gridWidth: number,
+    className?: string,
     setCellData?: (cellData: CellData) => void,
 }
 
 export const Cell: React.FC<CellProps> = ({
     id,
+    className,
+    gridHeight,
+    gridWidth,
     cellData,
     setCellData,
 }) => {
-
-    return <div className="cell-container">
-        {/* <div className={`cell-back ${!!isTopRow ? "cell-top-row" : ""} ${!!isTopRow && isHover ? "cell-back-hover" : ""}`} /> */}
-        <div className="cell-front" id={id.toString()}>
-            <Quarter
-                // {...(!!isTopRow ? {onMouseEnter: () => setIsHover(true), onMouseLeave: () => setIsHover(false)} : {})}
-                cellId={id}
-                direction="up"
-                quarterData={cellData.up}
-                setQuarterData={
-                    quarterData => !!setCellData && setCellData({ ...cellData, up: quarterData })
-                } />
-            <Quarter
-                cellId={id}
-                direction="right"
-                quarterData={cellData.right}
-                setQuarterData={
-                    quarterData => !!setCellData && setCellData({ ...cellData, right: quarterData })
-                } />
-            <Quarter
-                cellId={id}
-                direction="down"
-                quarterData={cellData.down}
-                setQuarterData={
-                    quarterData => !!setCellData && setCellData({ ...cellData, down: quarterData })
-                } />
-            <Quarter
-                cellId={id}
-                direction="left"
-                quarterData={cellData.left}
-                setQuarterData={
-                    quarterData => !!setCellData && setCellData({ ...cellData, left: quarterData })
-                } />
-        </div>
+    const suffix = `${gridHeight}x${gridWidth}`
+    return <div
+        className={joinClassesConditionally([
+            ["cell-container", true],
+            [`cell-${suffix}`, true],
+            [className!, !!className],
+        ])}
+        id={id.toString()}
+    >
+        <Quarter
+            cellId={id}
+            className={`quarter-${suffix}`}
+            direction="up"
+            quarterData={cellData.up}
+            setQuarterData={
+                quarterData => !!setCellData && setCellData({ ...cellData, up: quarterData })
+            } />
+        <Quarter
+            cellId={id}
+            className={`quarter-${suffix}`}
+            direction="right"
+            quarterData={cellData.right}
+            setQuarterData={
+                quarterData => !!setCellData && setCellData({ ...cellData, right: quarterData })
+            } />
+        <Quarter
+            cellId={id}
+            className={`quarter-${suffix}`}
+            direction="down"
+            quarterData={cellData.down}
+            setQuarterData={
+                quarterData => !!setCellData && setCellData({ ...cellData, down: quarterData })
+            } />
+        <Quarter
+            cellId={id}
+            className={`quarter-${suffix}`}
+            direction="left"
+            quarterData={cellData.left}
+            setQuarterData={
+                quarterData => !!setCellData && setCellData({ ...cellData, left: quarterData })
+            } />
     </div>
 }
 
@@ -59,11 +72,13 @@ type QuarterProps = {
     cellId: number,
     direction: Direction,
     quarterData: QuarterData,
+    className?: string,
     setQuarterData?: (quarterValue: QuarterData) => void,
 }
 
 const Quarter: React.FC<QuarterProps> = ({
     cellId,
+    className,
     direction,
     quarterData,
     setQuarterData,
@@ -93,7 +108,10 @@ const Quarter: React.FC<QuarterProps> = ({
         }
     };
 
-    return <div className="quarter-container">
+    return <div className={joinClassesConditionally([
+        ["quarter-container", true],
+        [className!, !!className],
+    ])}>
         <div
             onTouchEnd={() => document.getElementById(quarterId)?.blur()}
             id={quarterId}

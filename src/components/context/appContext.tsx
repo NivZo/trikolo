@@ -3,7 +3,10 @@ import React, { Dispatch, SetStateAction } from "react";
 export type Page = |
     "home" |
     "tutorial" |
-    "game"
+    "level-selection" |
+    "game-easy" |
+    "game-medium" |
+    "game-hard"
     ;
 
 type AppContextValue = {
