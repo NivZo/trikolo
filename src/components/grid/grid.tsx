@@ -3,6 +3,7 @@ import { Cell } from "../cell/cell";
 import "./grid.scss";
 import { CellData, GridData } from "../../util/types";
 import { splitArrayToSubarrays } from "../../util/utils";
+import { useWindowDimensions } from "../../util/hooks";
 
 type GridProps = {
     height: number,
@@ -11,17 +12,21 @@ type GridProps = {
     setGridData: React.Dispatch<React.SetStateAction<GridData>>,
 }
 
+
 export const Grid: React.FC<GridProps> = ({
     height,
     width,
     gridData,
     setGridData,
 }) => {
+    const { height: windowHeight, width: windowWidth } = useWindowDimensions();
 
     const cellArray = gridData.map(
         (cellData, i) => <Cell
             key={`cell-${i}`}
             id={i}
+            isPortrait={windowHeight > windowWidth}
+            siblings={width}
             cellData={cellData}
             setCellData={(newCellData: CellData) => {
                 setGridData((currentBoard: GridData) => {

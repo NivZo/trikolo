@@ -12,14 +12,11 @@ import { Fade } from "../../components/fade/fade";
 import { homeIcon, moonIcon, nextIcon, restartIcon, soundOffIcon, soundOnIcon, sunIcon } from "../../assets/icons/fontIcons";
 import { Timer } from "../../components/timer/timer";
 
-const height = 3;
-const width = 3;
-
 const GameScreen: React.FC = () => {
     const { setPage, isDarkMode, toggleDarkMode, isMuted, toggleMute } = React.useContext(AppContext);
     const [victory, setVictory] = React.useState(false);
 
-    const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), [victory === false]);
+    const rawBoardData: RawBoardData = React.useMemo(() => getRandomHash(), []);
     const [gridData, setGridData] = React.useState(initGrid(rawBoardData.original));
 
     React.useEffect(
@@ -28,7 +25,7 @@ const GameScreen: React.FC = () => {
                 setGridData(initGrid(rawBoardData.original));
             }
         },
-        [victory],
+        [victory, rawBoardData.original],
     )
 
     React.useEffect(
@@ -49,42 +46,40 @@ const GameScreen: React.FC = () => {
                 ])}
             >
                 <Timer isActive={!victory} />
-                <Grid height={height} width={width} gridData={gridData} setGridData={setGridData} />
-
-                <div className="grid-buttons-row">
-                    <TactileButton
-                        className="home-button"
-                        onClick={() => setPage("home")}
-                    >{homeIcon}
-                    </TactileButton>
-                    <TactileButton
-                        className="grid-reset-button"
-                        onClick={() => {
-                            if (victory) {
-                                setVictory(false);
-                            } else {
-                                setGridData(initGrid(rawBoardData.original));
-                            }
-                        }}
-                    >
-                        {victory ? nextIcon : restartIcon}
-                    </TactileButton>
-                    <TactileButton
-                        className="mute-button"
-                        onClick={toggleMute}
-                    >
-                        {isMuted ? soundOffIcon : soundOnIcon}
-                    </TactileButton>
-                    <TactileButton
-                        className="darkmode-button"
-                        onClick={toggleDarkMode}
-                    >
-                        {isDarkMode ? moonIcon : sunIcon}
-                    </TactileButton>
-                </div>
-
+                <Grid height={rawBoardData.height} width={rawBoardData.width} gridData={gridData} setGridData={setGridData} />
             </div >
         </GameContextProvider>
+        <div className="grid-buttons-row">
+            <TactileButton
+                className="home-button"
+                onClick={() => setPage("home")}
+            >{homeIcon}
+            </TactileButton>
+            <TactileButton
+                className="grid-reset-button"
+                onClick={() => {
+                    if (victory) {
+                        setVictory(false);
+                    } else {
+                        setGridData(initGrid(rawBoardData.original));
+                    }
+                }}
+            >
+                {victory ? nextIcon : restartIcon}
+            </TactileButton>
+            <TactileButton
+                className="mute-button"
+                onClick={toggleMute}
+            >
+                {isMuted ? soundOffIcon : soundOnIcon}
+            </TactileButton>
+            <TactileButton
+                className="darkmode-button"
+                onClick={toggleDarkMode}
+            >
+                {isDarkMode ? moonIcon : sunIcon}
+            </TactileButton>
+        </div>
     </Fade>;
 }
 

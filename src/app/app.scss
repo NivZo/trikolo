@@ -5,7 +5,7 @@
 @media (orientation:landscape) {
     :root {
         --logo-width: 10vw;
-        --button-width: 4vw;
+        --button-width: 2vw;
         font-size: 1vw;
     }
     
@@ -27,6 +27,7 @@
     padding: 0;
     font-family: "Abel";
 
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     vertical-align: middle;
@@ -35,6 +36,7 @@
 
 .screen {
     width: fit-content;
+    // width: 75vw;
     height: fit-content;
     margin: 0 auto;
 }

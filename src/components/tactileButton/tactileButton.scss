@@ -17,7 +17,7 @@
     transition: all .15s ease;
     font-family: "Abel";
     text-align: center;
-    width: var(--button-width);
+    min-width: var(--button-width);
 
     &.disabled {
         opacity: 0.5;

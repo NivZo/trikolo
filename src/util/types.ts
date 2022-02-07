@@ -20,6 +20,8 @@ export type GridData = Array<CellData>
 export type RawBoardData = {
     original: string,
     solution: string,
+    height: number,
+    width: number,
     boardIndex: number,
 };
 

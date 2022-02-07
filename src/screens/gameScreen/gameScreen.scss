@@ -1,13 +1,12 @@
 
 .grid {
-    margin: auto;
+    margin: 1vh;
 }
 
 .grid-buttons-row {
-    margin: 5vh 0;
-    width: 100%;
+    margin: 3vh 25vw;
+    width: 50vw;
     display: flex;
-    align-items: center;
 
     .tactile-button {
         margin: auto;
