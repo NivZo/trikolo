@@ -6,7 +6,9 @@ export type Page = |
     "level-selection" |
     "game-easy" |
     "game-medium" |
-    "game-hard"
+    "game-hard" |
+    "challenge" |
+    "challenge-score"
     ;
 
 type AppContextValue = {

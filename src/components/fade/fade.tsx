@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import "./fade.scss";
 
 export type FadeProps = {
     durationFactor?: number,

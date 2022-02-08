@@ -1,11 +1,11 @@
 #home-screen {
     .home-buttons {
+        margin-top: 5vh;
         align-items: center;
         display: flex;
         flex-direction: column;
 
         .tactile-button {
-            min-width: var(--logo-width);
             margin: 2vh;
         }
     }

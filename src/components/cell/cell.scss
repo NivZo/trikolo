@@ -2,22 +2,22 @@
   :root {
     --full-size-with-margins-3x3: 27vw;
     --full-size-with-margins-5x5: 16vw;
-    --full-size-with-margins-7x7: 12vw;
+    --full-size-with-margins-7x7: min(12vw, 8vh);
     --full-size-3x3: 24vw;
     --full-size-5x5: 14vw;
-    --full-size-7x7: 10vw;
+    --full-size-7x7: min(10vw, 7vh);
     --half-size-with-margin-3x3: 15vw;
     --half-size-with-margin-5x5: 9vw;
-    --half-size-with-margin-7x7: 7vw;
+    --half-size-with-margin-7x7: min(7vw, 4.5vh);
     --half-size-3x3: 12vw;
     --half-size-5x5: 7vw;
-    --half-size-7x7: 5vw;
+    --half-size-7x7: min(5vw, 3.5vh);
     --margin-3x3: 1.5vw;
     --margin-5x5: 1vw;
-    --margin-7x7: 1vw;
+    --margin-7x7: min(1vw, 0.5vh);
     --bounce-up-3x3: -1.5vw;
     --bounce-up-5x5: -1vw;
-    --bounce-up-7x7: -0.8vw;
+    --bounce-up-7x7: -0.3vw;
     --bounce-up-small-3x3: -0.5vw;
     --bounce-up-small-5x5: -0.3vw;
     --bounce-up-small-7x7: -0.2vw;

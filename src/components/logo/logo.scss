@@ -1,13 +1,13 @@
-
 .logo {
-    margin: 1vh 0;
+    margin: 0;
     width: 100%;
     text-align: center;
     letter-spacing: 0.25vw;
+    transition: all 0.5s ease-in-out;
 
     #logo-svg {
-        margin: 3vh 0;
-        width: var(--logo-width);
+        margin: 1vh 0;
+        height: var(--logo-height);
     }
 
     #logo-tri {
@@ -33,5 +33,24 @@
     #logo-bracket {
         color: black;
         fill: black;
+    }
+}
+
+.home-logo {
+    margin-bottom: 10vh;
+    transform: translateY(10vh);
+}
+
+.darkmode-on {
+    .logo {
+        #logo-tri {
+            color: whitesmoke;
+            fill: whitesmoke;
+        }
+
+        #logo-bracket {
+            color: whitesmoke;
+            fill: whitesmoke;
+        }
     }
 }

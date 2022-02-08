@@ -10,6 +10,8 @@ import { joinClassesConditionally } from "../util/utils";
 import "../assets/fonts/Abel-Regular.ttf";
 import "./app.scss";
 import { LevelSelectionScreen } from "../screens/levelSelectionScreen/levelSelectionScreen";
+import ChallengeScreen from "../screens/challengeScreen/challengeScreen";
+import ScoreScreen from "../screens/scoreScreen/scoreScreen";
 
 const getPage = (page: Page): JSX.Element => {
     switch (page) {
@@ -25,8 +27,14 @@ const getPage = (page: Page): JSX.Element => {
             return <GameScreen height={5} width={5} />;
         case "game-hard":
             return <GameScreen height={7} width={7} />;
+        case "challenge":
+            return <ChallengeScreen height={5} width={5} />;
+        case "challenge-score":
+            return <ScoreScreen />
     }
 }
+
+const lowLogoPages = ["home", "tutorial", "level-selection"];
 
 export const App: React.FC = () => {
     const [page, setPage] = React.useState<Page>("home")
@@ -45,7 +53,7 @@ export const App: React.FC = () => {
                     ["darkmode-on", isDarkMode],
                 ])
             }>
-                <Logo upperCase={true} />
+                <Logo upperCase={true} className={lowLogoPages.includes(page) ? "home-logo" : undefined} />
                 {getPage(page)}
             </div>
         </AppContextProvider>

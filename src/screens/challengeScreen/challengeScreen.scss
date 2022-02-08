@@ -1,12 +1,16 @@
-
 .grid {
     margin: auto;
 }
 
-#game-screen {
+.score-counter {
+    width: fit-content;
+    margin: auto;
+}
+
+#challenge-screen {
     .grid-buttons-row {
-        margin: 5vh auto;
-        width: fit-content;
+        margin: 5vh 0;
+        width: 100%;
         display: flex;
         align-items: center;
 

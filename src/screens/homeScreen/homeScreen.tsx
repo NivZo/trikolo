@@ -16,7 +16,7 @@ export const HomeScreen: React.FC = () => {
             ])}
         >
             <div className="home-buttons">
-                
+
                 <TactileButton
                     onClick={() => appContext.setPage("tutorial")}
                 >
@@ -24,11 +24,19 @@ export const HomeScreen: React.FC = () => {
                 </TactileButton>
 
                 <TactileButton
+                    onClick={() => appContext.setPage("challenge")}
+                >
+                    Daily Race
+                </TactileButton>
+
+                <TactileButton
                     onClick={() => appContext.setPage("level-selection")}
                 >
-                    Play
+                    Zen Mode
                 </TactileButton>
             </div>
         </div>
     </Fade>
 }
+
+export default HomeScreen;

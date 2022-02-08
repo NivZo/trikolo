@@ -1,4 +1,7 @@
 .grid {
+    width: fit-content;
+    margin: auto;
+
     .grid-row {
         display: flex;
         flex-direction: row;

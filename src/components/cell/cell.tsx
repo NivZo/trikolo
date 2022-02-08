@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import { CellData, Direction, QuarterData } from "../../util/types";
 import { getNextQuarterValue } from "../../util/gameUtils";
 import { joinClassesConditionally } from "../../util/utils";
@@ -91,7 +91,7 @@ const Quarter: React.FC<QuarterProps> = ({
     const soundable = !appContext.isMuted
 
     const onClick = () => {
-        if (!!setQuarterData && !quarterData.locked) {
+        if (!!setQuarterData && !quarterData.locked && clickable) {
             setQuarterData({
                 ...quarterData,
                 value: getNextQuarterValue(quarterData.value),

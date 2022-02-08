@@ -26,7 +26,7 @@ export const TactileButton: React.FC<TactileButtonProps> = ({
             ["disabled", !enabled],
             [className!, !!className],
         ])}
-        onMouseUp={() => {
+        onClick={() => {
             if (!!onClick && !!enabled) { onClick() };
             if (!isMuted) {
                 clickAudio.load();

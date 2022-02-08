@@ -1,0 +1,18 @@
+#score-screen {
+    .score-text {
+        font-size: 4.2vw;
+        word-wrap: break-word;
+        margin: 15vh 0 5vh 0;
+        text-align: center;
+    }
+
+    .score-buttons {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        .tactile-button {
+            margin: 2vh;
+        }
+    }
+}
