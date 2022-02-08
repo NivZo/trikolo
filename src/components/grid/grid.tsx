@@ -9,6 +9,7 @@ type GridProps = {
     width: number,
     gridData: GridData,
     setGridData: React.Dispatch<React.SetStateAction<GridData>>,
+    tutorialGrid?: boolean,
 }
 
 export const Grid: React.FC<GridProps> = ({
@@ -16,14 +17,15 @@ export const Grid: React.FC<GridProps> = ({
     width,
     gridData,
     setGridData,
+    tutorialGrid,
 }) => {
 
     const cellArray = gridData.map(
         (cellData, i) => <Cell
             key={`cell-${i}`}
             id={i}
-            gridHeight={height}
-            gridWidth={width}
+            gridHeight={tutorialGrid ? 3 : height}
+            gridWidth={tutorialGrid ? 3 : width}
             cellData={cellData}
             setCellData={(newCellData: CellData) => {
                 setGridData((currentBoard: GridData) => {

@@ -75,7 +75,7 @@ const tutorialGridScript: TutorialStepScript[] = [
         advanceCheck: gridHash => ["0012", "0021"].includes(gridHash),
     },
     {
-        gridHash: "N1102001021N",
+        gridHash: "2N102001021N",
         gridHeight: 1,
         gridWidth: 3,
         text: [
@@ -126,7 +126,13 @@ export const TutorialScreen: React.FC = () => {
             <div className="tutorial-text">
                 {tutorialGridScript[tutorialStep].text.map(row => <span className="tutorial-text-row">{
                     row.length > 0 && row[0] === "GRID" ?
-                        <Grid height={tutorialGridScript[tutorialStep].gridHeight} width={tutorialGridScript[tutorialStep].gridWidth} gridData={gridData} setGridData={setGridData} />
+                        <Grid
+                            height={tutorialGridScript[tutorialStep].gridHeight}
+                            width={tutorialGridScript[tutorialStep].gridWidth}
+                            gridData={gridData}
+                            setGridData={setGridData}
+                            tutorialGrid={true}
+                        />
                         : row
                 }</span>)}
             </div>

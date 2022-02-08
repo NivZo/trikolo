@@ -28,6 +28,10 @@ export const LevelSelectionScreen: React.FC = () => {
                 <TactileButton onClick={() => appContext.setPage("game-hard")}>
                     Hard - 7x7
                 </TactileButton>
+
+                <TactileButton onClick={() => appContext.setPage("home")}>
+                    Back
+                </TactileButton>
             </div>
         </div>
     </Fade>

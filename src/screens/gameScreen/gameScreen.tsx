@@ -59,7 +59,7 @@ const GameScreen: React.FC<GameScreenProps> = ({
                 <div className="grid-buttons-row">
                     <TactileButton
                         className="home-button"
-                        onClick={() => setPage("home")}
+                        onClick={() => setPage("level-selection")}
                     >{homeIcon}
                     </TactileButton>
                     <TactileButton
