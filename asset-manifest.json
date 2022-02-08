@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/trikolo/static/css/main.8a2ce0d5.css",
-    "main.js": "/trikolo/static/js/main.b7172955.js",
+    "main.css": "/trikolo/static/css/main.3e9f835d.css",
+    "main.js": "/trikolo/static/js/main.2646e48e.js",
     "static/js/377.ab2940be.chunk.js": "/trikolo/static/js/377.ab2940be.chunk.js",
     "service-worker.js": "/trikolo/service-worker.js",
     "static/media/click.wav": "/trikolo/static/media/click.837891333dc8e99509f7.wav",
     "static/media/Abel-Regular.ttf": "/trikolo/static/media/Abel-Regular.3843f456cf56d275baf6.ttf",
     "static/media/arcadeClick.mp3": "/trikolo/static/media/arcadeClick.e68cfbe56b01203f7f8e.mp3",
     "index.html": "/trikolo/index.html",
-    "main.8a2ce0d5.css.map": "/trikolo/static/css/main.8a2ce0d5.css.map",
-    "main.b7172955.js.map": "/trikolo/static/js/main.b7172955.js.map",
+    "main.3e9f835d.css.map": "/trikolo/static/css/main.3e9f835d.css.map",
+    "main.2646e48e.js.map": "/trikolo/static/js/main.2646e48e.js.map",
     "377.ab2940be.chunk.js.map": "/trikolo/static/js/377.ab2940be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8a2ce0d5.css",
-    "static/js/main.b7172955.js"
+    "static/css/main.3e9f835d.css",
+    "static/js/main.2646e48e.js"
   ]
 }
