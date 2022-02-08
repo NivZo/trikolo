@@ -4,13 +4,14 @@
 
 .score-counter {
     width: fit-content;
+    height: fit-content;
     margin: auto;
 }
 
 #challenge-screen {
     .grid-buttons-row {
-        margin: 5vh 0;
-        width: 100%;
+        margin: 5vh auto;
+        width: fit-content;
         display: flex;
         align-items: center;
 

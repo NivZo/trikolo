@@ -35,9 +35,15 @@
 
 .screen {
     width: fit-content;
-    height: 80%;
+    height: 100%;
     margin: auto;
-    padding-bottom: 5vh;
+}
+
+@media (orientation:portrait) {
+    .screen {
+        height: 80%;
+        padding-bottom: 5vh;
+    }
 }
 
 .unselectable-text {
